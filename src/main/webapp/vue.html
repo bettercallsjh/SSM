@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="vue/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="button" @click="add" value="新增"/>
+    <input type="button" @click="emplist" value="查询"/>
+    <table border="1" width="800px">
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>入职日期</th>
+            <th>薪水</th>
+            <th>操作</th>
+        </tr>
+        <tr v-cloak v-for="e in list">
+            <td>{{e.empid}}</td>
+            <td>{{e.ename }}</td>
+            <td>{{e.sex }}</td>
+            <td>{{e.jobDate }}</td>
+            <td>{{e.salary}}</td>
+            <td>
+                <input type="button" @click="modify(empid)" value="修改"/>
+                |
+                <input type="button" @click="del(empid)" value="删除"/>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+
+        },
+        methods: {
+
+            add: function () {
+            },
+            modify: function () {
+                $.modify(empid)
+            },
+            del: function () {
+                $.del(empid)
+            },
+
+            emplist: function () {
+                var url = "../empAjax/list"
+                $.post(url, null, function (data) {
+
+                    app.list = data.list;
+
+
+                }, "json")
+
+            }
+
+
+        }
+
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--<settings>
+        &lt;!&ndash;开启二级缓存&ndash;&gt;
+        &lt;!&ndash;<setting name="cacheEnabled" value="true"></setting>&ndash;&gt;
+        &lt;!&ndash;开启延迟加载&ndash;&gt;
+        &lt;!&ndash;<setting name="lazyLoadingEnabled" value="true"/>&ndash;&gt;
+        &lt;!&ndash;fasle 查询时关闭即时加载&ndash;&gt;
+        &lt;!&ndash;<setting name="aggressiveLazyLoading" value="false"></setting>&ndash;&gt;
+    </settings>-->
+
+    <typeAliases>
+        <!--在映射文件中 就可以使用 别名 取代 权限定名-->
+        <!--<typeAlias type="com.woniu.entity.Emp" alias="emp" />-->
+        <!--按照包名下的所有实体 取别名 ，别名默认就是类名或者 类名的首字母小写
+            com.woniu.entity.Emp    emp    Emp
+            com.woniu.entity.User   user   User
+        -->
+        <package name="com.woniu.ssm.entity" />
+        <package name="com.woniu.ssm.vo" />
+    </typeAliases>
+    
+    
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
+
+    <!--<environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+
+    <!--映射文件-->
+    <!--<mappers>
+        <mapper resource="mapper/DeptMapper.xml"/>
+        <mapper resource="mapper/EmpMapper.xml"/>
+    </mappers>-->
+</configuration>
